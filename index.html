@@ -6,11 +6,11 @@
     <meta name="theme-color" content="#0A0F0B" />
 
     <!--
-      ВАЖНО: адрес doma.volgorechensk.ru встречается в этом файле, в public/robots.txt
-      и в public/sitemap.xml. При покупке домена замените его во всех трёх местах,
-      иначе поисковики будут считать канонической несуществующую страницу.
+      Адрес сайта встречается в этом файле, в public/robots.txt и в public/sitemap.xml.
+      При переезде на свой домен заменить во всех трёх местах и в vite.config.ts
+      вернуть base = '/'. Порядок действий — в README, раздел «Свой домен».
     -->
-    <link rel="canonical" href="https://doma.volgorechensk.ru/" />
+    <link rel="canonical" href="https://anastasiaek.github.io/solnechny-lug/" />
 
     <title>Купить дом в Волгореченске — ЖК «Солнечный Луг», ИЖС, Костромская область</title>
     <meta
@@ -20,7 +20,7 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
-    <meta property="og:url" content="https://doma.volgorechensk.ru/" />
+    <meta property="og:url" content="https://anastasiaek.github.io/solnechny-lug/" />
     <meta property="og:site_name" content="Жилой комплекс «Солнечный Луг»" />
     <meta property="og:title" content="Купить дом в Волгореченске у леса — «Солнечный Луг»" />
     <meta
@@ -28,7 +28,7 @@
       content="Дом из экоблоков 120 м² на участке ИЖС. Лес в 30 метрах, Волга рядом, школа и магазины пешком. От 10 000 000 ₽."
     />
     <!-- JPEG, а не WebP: часть мессенджеров и соцсетей не рисует WebP-превью. -->
-    <meta property="og:image" content="https://doma.volgorechensk.ru/og-image.jpg" />
+    <meta property="og:image" content="https://anastasiaek.github.io/solnechny-lug/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -40,9 +40,9 @@
         "@graph": [
           {
             "@type": "RealEstateAgent",
-            "@id": "https://doma.volgorechensk.ru/#org",
+            "@id": "https://anastasiaek.github.io/solnechny-lug/#org",
             "name": "Жилой комплекс «Солнечный Луг»",
-            "url": "https://doma.volgorechensk.ru/",
+            "url": "https://anastasiaek.github.io/solnechny-lug/",
             "telephone": "+7 (910) 197-33-50",
             "email": "eka-energo@mail.ru",
             "areaServed": "Волгореченск, Костромская область",
@@ -63,7 +63,7 @@
             "@type": "SingleFamilyResidence",
             "name": "Двухэтажный дом 120 м² на участке ИЖС в Волгореченске",
             "description": "Дом из экоблоков 2019 года постройки, фасад под «короед». Три спальни, кухня-гостиная 27,9 м², два санузла. Газ, вода и канализация в доме. Лес в 30 метрах, освещённая лыжня 3 км, Волга рядом.",
-            "url": "https://doma.volgorechensk.ru/",
+            "url": "https://anastasiaek.github.io/solnechny-lug/",
             "numberOfRooms": 4,
             "numberOfBedrooms": 3,
             "numberOfBathroomsTotal": 2,
@@ -86,7 +86,7 @@
               "price": 10000000,
               "priceCurrency": "RUB",
               "availability": "https://schema.org/InStock",
-              "seller": { "@id": "https://doma.volgorechensk.ru/#org" }
+              "seller": { "@id": "https://anastasiaek.github.io/solnechny-lug/#org" }
             }
           }
         ]

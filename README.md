@@ -65,35 +65,40 @@ npm run preview  # посмотреть собранную версию
 [AnimatedHeading.tsx](src/components/AnimatedHeading.tsx) — посимвольный ввод заголовка,
 [useReducedMotion.ts](src/hooks/useReducedMotion.ts) — отключение анимаций по настройке ОС.
 
-## Публикация на GitHub Pages
+## Сайт опубликован
 
-Репозиторий уже инициализирован, первый коммит сделан, workflow
-[.github/workflows/deploy.yml](.github/workflows/deploy.yml) собирает проект и выкладывает
-`dist/` при каждом пуше в `main`. Домен лежит в `public/CNAME` и попадает в сборку.
+**https://anastasiaek.github.io/solnechny-lug/**
 
-Что осталось сделать руками:
+Репозиторий: `AnastasiaEk/solnechny-lug`. Workflow
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml) пересобирает и выкладывает
+сайт при каждом пуше в `main` — вручную ничего запускать не нужно:
 
 ```bash
-# 1. Создать репозиторий на github.com (публичный — Pages на бесплатном тарифе
-#    работает только с публичными) и привязать его:
-git remote add origin https://github.com/<ваш-логин>/solnechny-lug.git
-git push -u origin main
+git add -A && git commit -m "правки текста" && git push
 ```
 
-2. В репозитории: **Settings → Pages → Source → GitHub Actions**. После этого workflow
-   отработает сам, сайт появится на `<логин>.github.io/solnechny-lug`.
-3. Там же **Settings → Pages → Custom domain** → `doma.volgorechensk.ru`, поставить
-   галочку **Enforce HTTPS**.
-4. В DNS домена `volgorechensk.ru` добавить запись:
-   `CNAME  doma  →  <логин>.github.io.`
-   Сертификат Let's Encrypt GitHub выпустит сам, обычно за 10–20 минут.
+Сайт лежит в подпапке `/solnechny-lug/`, поэтому `base` в
+[vite.config.ts](vite.config.ts) берётся из переменной `VITE_BASE`, а ссылки на файлы из
+`public/` идут через [asset()](src/lib/asset.ts). Без этого картинки и видео отдавали бы 404.
 
-Домен прописан в четырёх местах и должен совпадать везде: `public/CNAME`, `index.html`
-(canonical, og:url, og:image, JSON-LD), `public/robots.txt`, `public/sitemap.xml`.
+### Свой домен
 
-Альтернатива, если GitHub окажется неудобен: любой российский хостинг — Timeweb, Beget,
-Reg.ru (150–300 ₽/мес), заливается папка `dist/` целиком. Ни бэкенда, ни базы не нужно,
-заявки уходят в Google-форму прямо из браузера.
+Когда появится доступ к DNS нужного домена:
+
+1. Создать `public/CNAME` с одной строкой — именем домена.
+2. Прописать домен в `index.html` (canonical, og:url, og:image, JSON-LD) и
+   `public/sitemap.xml`; в `public/robots.txt` — в директиве `Sitemap` и вернуть `Host`.
+3. В [.github/workflows/deploy.yml](.github/workflows/deploy.yml) убрать `VITE_BASE` —
+   на своём домене сайт живёт в корне.
+4. В DNS домена добавить `CNAME  <поддомен>  →  anastasiaek.github.io.`
+5. В репозитории **Settings → Pages → Custom domain** вписать домен и включить
+   **Enforce HTTPS**. Сертификат GitHub выпустит сам за 10–20 минут.
+
+Пока домена нет, canonical и sitemap указывают на адрес github.io — иначе поисковики
+считали бы канонической несуществующую страницу и не проиндексировали сайт вовсе.
+
+Альтернатива GitHub: любой российский хостинг — Timeweb, Beget, Reg.ru (150–300 ₽/мес),
+заливается папка `dist/` целиком.
 
 После публикации, в таком порядке:
 
