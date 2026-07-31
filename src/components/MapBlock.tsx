@@ -35,11 +35,16 @@ export default function MapBlock() {
 
         <Reveal delay={80} className="lg:col-span-3">
           <div className="panel h-full min-h-[24rem] overflow-hidden rounded-xl">
+            {/* sandbox не даёт фрейму увести пользователя с сайта: разрешено
+                ровно то, что нужно карте для работы. referrerpolicy не отдаёт
+                Яндексу полный адрес страницы. */}
             <iframe
               src={mapEmbedSrc}
               title="Карта: Волгореченск, Луговая улица"
               loading="lazy"
               allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
               className="h-full min-h-[24rem] w-full border-0"
             />
           </div>

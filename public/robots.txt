@@ -3,4 +3,4 @@ Allow: /
 
 # Адрес обновляется вместе с canonical в index.html и sitemap.xml.
 # При переезде на свой домен здесь же вернуть директиву Host.
-Sitemap: https://anastasiaek.github.io/solnechny-lug/sitemap.xml
+Sitemap: https://anastasiaek.github.io/solnechnye-luga/sitemap.xml

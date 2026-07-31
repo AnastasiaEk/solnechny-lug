@@ -25,6 +25,9 @@ function validate(values: { name: string; phone: string }): Errors {
   return errors;
 }
 
+/** Человек не заполняет форму быстрее этого, мс. */
+const MIN_FILL_TIME = 2500;
+
 export default function ContactForm() {
   const [values, setValues] = useState({ name: '', phone: '', time: '' });
   const [errors, setErrors] = useState<Errors>({});
@@ -33,6 +36,9 @@ export default function ContactForm() {
 
   const nameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
+  /** Поле-приманка: человек его не видит, боты заполняют все поля подряд. */
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const mountedAt = useRef(Date.now());
 
   const setField = (field: keyof typeof values) => (value: string) => {
     setValues((v) => ({ ...v, [field]: value }));
@@ -60,6 +66,17 @@ export default function ContactForm() {
     }
     if (found.phone) {
       phoneRef.current?.focus();
+      return;
+    }
+
+    // Заполненная приманка или мгновенная отправка — почти наверняка бот.
+    // Показываем успех, но никуда не отправляем: пусть не подбирает обход.
+    const looksAutomated =
+      Boolean(honeypotRef.current?.value) ||
+      Date.now() - mountedAt.current < MIN_FILL_TIME;
+
+    if (looksAutomated) {
+      setStatus('sent');
       return;
     }
 
@@ -120,6 +137,18 @@ export default function ContactForm() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="panel rounded-2xl p-8">
+              {/* Приманка для ботов: скрыта от глаз и от экранных дикторов,
+                  исключена из порядка табуляции и из автозаполнения. */}
+              <input
+                ref={honeypotRef}
+                type="text"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-0 w-0 opacity-0"
+              />
+
               <div className="space-y-5">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm text-gray-300">
