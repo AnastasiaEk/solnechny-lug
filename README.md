@@ -65,18 +65,35 @@ npm run preview  # посмотреть собранную версию
 [AnimatedHeading.tsx](src/components/AnimatedHeading.tsx) — посимвольный ввод заголовка,
 [useReducedMotion.ts](src/hooks/useReducedMotion.ts) — отключение анимаций по настройке ОС.
 
-## Публикация
+## Публикация на GitHub Pages
 
-`npm run build` собирает статику в `dist/` — 1,8 МБ целиком. Ни бэкенда, ни базы не нужно:
-достаточно любого хостинга, отдающего файлы. Заявки уходят в Google-форму прямо из браузера.
+Репозиторий уже инициализирован, первый коммит сделан, workflow
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml) собирает проект и выкладывает
+`dist/` при каждом пуше в `main`. Домен лежит в `public/CNAME` и попадает в сборку.
 
-Домен прописан в трёх местах и должен совпадать везде: `index.html` (canonical, og:url,
-og:image, JSON-LD), `public/robots.txt`, `public/sitemap.xml`. Сейчас там заглушка
-`solnechny-lug.ru`.
+Что осталось сделать руками:
 
-Хостинг для российской аудитории лучше брать российский — Timeweb, Beget, Reg.ru
-(150–300 ₽/мес). Vercel и Netlify бесплатны, но из России открываются нестабильно, а сайт
-рассчитан ровно на этот трафик.
+```bash
+# 1. Создать репозиторий на github.com (публичный — Pages на бесплатном тарифе
+#    работает только с публичными) и привязать его:
+git remote add origin https://github.com/<ваш-логин>/solnechny-lug.git
+git push -u origin main
+```
+
+2. В репозитории: **Settings → Pages → Source → GitHub Actions**. После этого workflow
+   отработает сам, сайт появится на `<логин>.github.io/solnechny-lug`.
+3. Там же **Settings → Pages → Custom domain** → `doma.volgorechensk.ru`, поставить
+   галочку **Enforce HTTPS**.
+4. В DNS домена `volgorechensk.ru` добавить запись:
+   `CNAME  doma  →  <логин>.github.io.`
+   Сертификат Let's Encrypt GitHub выпустит сам, обычно за 10–20 минут.
+
+Домен прописан в четырёх местах и должен совпадать везде: `public/CNAME`, `index.html`
+(canonical, og:url, og:image, JSON-LD), `public/robots.txt`, `public/sitemap.xml`.
+
+Альтернатива, если GitHub окажется неудобен: любой российский хостинг — Timeweb, Beget,
+Reg.ru (150–300 ₽/мес), заливается папка `dist/` целиком. Ни бэкенда, ни базы не нужно,
+заявки уходят в Google-форму прямо из браузера.
 
 После публикации, в таком порядке:
 
