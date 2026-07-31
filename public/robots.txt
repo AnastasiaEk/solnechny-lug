@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# ВАЖНО: домен ниже должен совпадать с реальным адресом сайта.
+Sitemap: https://doma.volgorechensk.ru/sitemap.xml
+Host: doma.volgorechensk.ru
