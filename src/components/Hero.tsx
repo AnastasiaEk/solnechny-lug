@@ -2,8 +2,9 @@ import { useEffect, useRef } from 'react';
 import AnimatedHeading from './AnimatedHeading';
 import FadeIn from './FadeIn';
 import { hero } from '../content';
+import { asset } from '../lib/asset';
 
-const VIDEO_SRC = '/background.mp4';
+const VIDEO_SRC = asset('/background.mp4');
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);

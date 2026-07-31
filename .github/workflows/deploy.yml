@@ -27,7 +27,12 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # Сайт живёт в подпапке /<репозиторий>/, пока не подключён свой домен.
+      # После привязки домена значение меняется на /.
       - run: npm run build
+        env:
+          VITE_BASE: /${{ github.event.repository.name }}/
 
       - uses: actions/upload-pages-artifact@v3
         with:

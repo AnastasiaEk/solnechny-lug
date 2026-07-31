@@ -6,6 +6,8 @@
  * или заменить. Полный список — в README.md, раздел «Что проверить до запуска».
  */
 
+import { asset } from './lib/asset';
+
 /** Контакты. TODO: заменить на реальные до публикации. */
 export const contacts = {
   phone: '+7 (910) 197-33-50',
@@ -206,42 +208,42 @@ export const gallery: {
   height: number;
 }[] = [
   {
-    src: '/photos/posyolok-zima-lyzhnya.webp',
+    src: asset('/photos/posyolok-zima-lyzhnya.webp'),
     alt: 'Зимний вечер в жилом комплексе: лыжня вдоль улицы, наряженная ель, ряд домов под фонарями',
     caption: 'Лыжня начинается прямо у домов',
     width: 1024,
     height: 768,
   },
   {
-    src: '/photos/lyzhnaya-trassa.webp',
+    src: asset('/photos/lyzhnaya-trassa.webp'),
     alt: 'Вид с высоты на петли лыжной трассы среди перелеска и луговых полян',
     caption: 'Лыжня 3 км — вид с высоты',
     width: 739,
     height: 1361,
   },
   {
-    src: '/photos/dom-leto-fasad.webp',
+    src: asset('/photos/dom-leto-fasad.webp'),
     alt: 'Двухэтажный дом со светлым фасадом и коричневой крышей, вокруг луговая трава',
     caption: 'Фасад дома летом',
     width: 768,
     height: 1024,
   },
   {
-    src: '/photos/ulitsa-zima.webp',
+    src: asset('/photos/ulitsa-zima.webp'),
     alt: 'Заснеженная улица комплекса с рядом одинаковых домов за коваными оградами на закате',
     caption: 'Улица зимой',
     width: 828,
     height: 1024,
   },
   {
-    src: '/photos/dom-leto-vhod.webp',
+    src: asset('/photos/dom-leto-vhod.webp'),
     alt: 'Боковой фасад дома с входными дверями, газовой подводкой и зелёным газоном',
     caption: 'Входная группа и подведённый газ',
     width: 1024,
     height: 768,
   },
   {
-    src: '/photos/dom-zima-terrasa.webp',
+    src: asset('/photos/dom-zima-terrasa.webp'),
     alt: 'Дом зимой: расчищенная площадка у входа, навес над террасой, соседние дома вдалеке',
     caption: 'Двор зимой',
     width: 1024,
@@ -254,7 +256,7 @@ export const plans = {
   note: 'Габариты дома — 10,17 × 7,92 м. Планировка свободная: на схемах показан проектный вариант расстановки, можно изменить под свой сценарий жизни.',
   floors: [
     {
-      src: '/photos/plan-1-etazh.webp',
+      src: asset('/photos/plan-1-etazh.webp'),
       alt: 'План первого этажа: кухня-гостиная, холл, гардеробная и ванная комната',
       title: '1 этаж',
       width: 1024,
@@ -267,7 +269,7 @@ export const plans = {
       ],
     },
     {
-      src: '/photos/plan-2-etazh.webp',
+      src: asset('/photos/plan-2-etazh.webp'),
       alt: 'План второго этажа: три спальни, холл и ванная комната',
       title: '2 этаж',
       width: 1024,
@@ -282,7 +284,7 @@ export const plans = {
     },
   ],
   plot: {
-    src: '/photos/shema-uchastka.webp',
+    src: asset('/photos/shema-uchastka.webp'),
     alt: 'Кадастровая схема расположения дома на земельном участке',
     title: 'Схема участка',
     text: 'Кадастровая схема: контур дома, границы участка, соседние наделы и выход на улицу. Север — сверху схемы.',
