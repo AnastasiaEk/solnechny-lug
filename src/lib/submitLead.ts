@@ -21,7 +21,7 @@ async function sendByEmail(lead: Lead): Promise<SubmitResult> {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
-        _subject: `Заявка с сайта «Солнечный Луг» — ${lead.name}`,
+        _subject: `Заявка с сайта «Солнечные луга» — ${lead.name}`,
         _template: 'table',
         // Отключает страницу-заглушку капчи: для ajax она только мешает.
         _captcha: 'false',
